@@ -2,6 +2,8 @@
 
 A read-only Solana mainnet monitor built on **Solami RPC and standard WebSocket subscriptions**. It follows up to three public accounts, reconciles their recent confirmed signatures after disconnects, deduplicates the stream and HTTP observations, and displays transaction fees, failure status and precise native-balance changes.
 
+[Watch the live mainnet demo (2m 33s)](https://github.com/willmanntatel-alt/solami-account-watch/blob/main/demo.mp4) · [Demo notes](DEMO.md)
+
 ## Run
 
 Node.js **24 or later**. No runtime dependencies or wallet connection.
@@ -13,6 +15,8 @@ npm start
 ```
 
 Windows PowerShell: `Copy-Item .env.example .env.local`.
+
+If npm is not installed, start directly with `node --env-file-if-exists=.env.local server.mjs`; tests also run directly with `node --test test/*.test.mjs`.
 
 Open **http://127.0.0.1:5017**. Watch a public wallet or account. The default is a public fee-payer address observed during the live mainnet test on 2026-10-10, with no ownership or affiliation claimed. Its future activity is not guaranteed. Replace it with an active public account of interest in the dashboard, or set `WATCH_ACCOUNTS` to a comma-separated list in `.env.local`. Changing the watchlist resets the timeline and recent-history checkpoints.
 
@@ -60,15 +64,15 @@ Tests cover decoded address length, exact lamport display, duplicate/out-of-orde
 
 `.env.local` is git-ignored. Keys stay in the Node.js process and are never sent to the local UI. The server binds only to loopback, validates Host/Origin, rejects arbitrary proxy methods, and allows only read RPC calls. Do not publish `.env.local`, evidence containing keys, or an authenticated upstream URL. This project has no transaction signing or sending code.
 
-## Demo outline (2–3 minutes)
+## Recorded demo
 
-1. Show mainnet fingerprint verification, advancing slot and live stream messages.
-2. Inspect the watched public wallet timeline, fees and native balance changes.
-3. Add a public account of interest; inspect account type and native balance changes.
-4. Reconnect the stream; show reconnect count and HTTP catch-up provenance.
-5. Show coverage limits, error counters, and the README setup instructions.
+1. Mainnet verification, advancing slots and stream messages.
+2. Public wallet timeline, actual confirmed fees and native balance changes.
+3. Failed-transaction and HTTP catch-up filters.
+4. Manual reconnect; reconnect count, HTTP reconciliation and connection journal.
+5. Coverage limits and setup requirements in English captions.
 
-Demo evidence must be recorded from actual live mainnet data. Offline tests and UI placeholders are not a live demonstration.
+`demo.mp4` was captured from the actual local dashboard using timestamped browser screencast frames on 2026-10-10, with original elapsed timing and explanatory captions. No sample transactions were injected. The stream was manually reconnected; this is a reconnection demonstration, not a simulated extended network outage. Offline tests and UI placeholders are not a live demonstration.
 
 ## Sources
 
