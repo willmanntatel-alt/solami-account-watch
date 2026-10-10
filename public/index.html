@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solami Account Watch</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+  <header><a class="brand" href="/">◈ <span>Solami <strong>Account Watch</strong></span></a><div class="header-right"><span class="chip">READ ONLY</span><span class="chip" id="network">VERIFYING NETWORK</span></div></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">SOLANA OBSERVABILITY / POWERED BY SOLAMI</p><h1>See activity.<br><span>Keep the context.</span></h1><p class="lede">Follow accounts on mainnet, inspect confirmed transactions, and see what happened while your stream was offline.</p></div><div class="connection"><span class="dot" id="dot"></span><strong id="stream-state">Starting monitor</strong><small id="stream-age">Waiting for a real stream</small><button id="reconnect" class="secondary">Reconnect stream</button></div></section>
+    <section class="stats" aria-label="Live metrics">
+      <article><p>Processed slot</p><strong id="slot">—</strong><small id="finalized">Finalized: —</small></article>
+      <article><p>Stream messages</p><strong id="messages">0</strong><small id="reconnects">Reconnects: 0</small></article>
+      <article><p>Tracked transactions</p><strong id="tracked">0</strong><small id="failed">Confirmed history window</small></article>
+      <article><p>RPC latency · p95</p><strong id="latency">—</strong><small id="requests">No successful requests yet</small></article>
+    </section>
+    <section class="watch panel"><div class="section-title"><div><p class="eyebrow">WATCHLIST</p><h2>Your accounts, live</h2></div><span class="subtle">Up to 3 accounts</span></div><form id="watch-form"><label for="addresses">Solana addresses, separated by commas</label><div class="form-row"><input id="addresses" autocomplete="off" spellcheck="false" placeholder="Paste a wallet, mint or program address" required><button type="submit">Watch accounts <span>↗</span></button></div><p id="form-status" role="status"></p></form><div id="accounts" class="accounts"></div></section>
+    <section class="lower"><div class="panel timeline"><div class="section-title"><div><p class="eyebrow">TRANSACTION TIMELINE</p><h2>A record with a source</h2></div><label class="filter">Show <select id="filter"><option value="all">All activity</option><option value="failed">Failed only</option><option value="recovered">HTTP catch-up</option></select></label></div><p class="subtle" id="reconcile">Waiting for the first confirmed reconciliation.</p><div id="transactions"></div></div><aside class="panel"><p class="eyebrow">CONNECTION JOURNAL</p><h2>Recovery, explained</h2><p class="subtle">The stream gives timely signals. HTTP reconciliation checks the recent confirmed history. A bounded window can leave gaps; we show that explicitly.</p><div id="notices" class="notices"></div></aside></section>
+    <footer><span>Solami RPC + WebSocket · no wallet connection required</span><span id="clock">Waiting for live data</span></footer>
+  </main>
+</body></html>
