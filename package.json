@@ -1,0 +1,13 @@
+{
+  "name": "solami-account-watch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Read-only Solana mainnet account monitor with stream recovery through Solami",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env.local server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "license": "MIT"
+}
